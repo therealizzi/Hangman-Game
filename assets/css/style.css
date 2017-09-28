@@ -1,0 +1,38 @@
+
+
+    body {  padding-top: 140px; 
+            padding-bottom: 140px; 
+            background-color: #9fa4a6;}
+
+    .title {
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    .fonts {
+        font-family: 'Squada One', cursive;
+    }
+
+    .panel_aboutme {
+    background-color: #white !important;
+    border-style: solid;
+    border-color: #d0d6e0;
+    padding: 10px;
+    }
+
+    .navbar { 
+    background-color: white; }
+
+	.copyright {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #666666;
+	color: #9fa4a6;
+	}
+
+	.copytext {
+	text-align: center;
+	padding-top: 10px;
+	color: white;
+	}
