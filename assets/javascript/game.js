@@ -15,12 +15,9 @@
 	var guessed = String.fromCharCode(event.keyCode);
 
 	console.log(guessed)
-	var n = randWord.indexOf(guessed);
-	console.log(n)
+	var indexGuess = randWord.indexOf(guessed);
 
-	delete progress[n]; 
-	console.log(progress)
-	// process.splice()
+	console.log(indexGuess)
 
 //this checks guess against randWord
 
@@ -29,7 +26,17 @@
 	} else {
 	document.getElementById("guessed").innerHTML += guessed;	
 	}
-	console.log(progress);
+
+//this splices the progress array and adds in the correct guess
+	var progress
+
+	var guessed 
+	
+	blanks.splice(indexGuess,1,guessed);
+
+	console.log(blanks)
+
+	document.getElementById("progress").innerHTML = blanks;
 
 //this reduces the count of "tries" with each click
 
@@ -48,6 +55,7 @@
 
 	var letters = randWord.split("");
 	var progress = "";
+
 
 	for (u = 0; u < randWord.length; u++){
 		progress += "_ "
