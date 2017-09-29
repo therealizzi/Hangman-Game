@@ -36,7 +36,7 @@
 
 	console.log(blanks)
 
-	document.getElementById("progress").innerHTML = blanks;
+	document.getElementById("progress").innerHTML = blanks.join(" ");
 
 //this reduces the count of "tries" with each click
 
@@ -56,16 +56,13 @@
 	var letters = randWord.split("");
 	var progress = "";
 
-
 	for (u = 0; u < randWord.length; u++){
 		progress += "_ "
 	}
 	
-	var blanks = progress.split(" ")
-
+	var blanks = progress.split()
 
 //this swaps blanks for letters
-
 
 	document.getElementById("progress").innerHTML = progress;
 
