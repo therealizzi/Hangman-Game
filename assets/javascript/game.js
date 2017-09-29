@@ -1,5 +1,5 @@
 
-//this sets global variables
+//Global variables
 
 //this is the win counter
 	var wins = 0;
@@ -27,6 +27,7 @@
 	for (i = 0; i < randWord.length; i++){	
 		progress.push("_");
 	}
+	document.getElementById("progress").innerHTML = progress.join('');
 
 console.log(randWord)
 console.log(letters)
@@ -79,6 +80,7 @@ var losing = true;
 		wins ++;
 		document.getElementById("tries").innerHTML = "You won!";
 		document.getElementById("wrongletters").innerHTML = "You won!";
-		document.getElementById("wins").innerHTML = wins;
+		document.getElementById("wins").innerHTML = wins;4
 	}
 }
+
