@@ -1,46 +1,51 @@
-
-
-//this sets global variables
+//Global variables
 	var wins = 0;
 	document.getElementById("wins").innerHTML = wins;
 
+//this is SUPPOSED to be the game start function
+	// window.onload = function PlayMyGame(){
+
+//this is the tries counter
 	var tries = 12;
 	document.getElementById("tries").innerHTML = tries;	
 
+//this array holds the random words
 	var randWordArray = ["ASTROIDS", "FROGGER", "PONG", "CASTLEVANIA", "ZELDA", "TRON", "DOOM", "CENTIPEDE", "PAPERBOY", "EXCITEBIKE", "PACMAN","SONIC","CONTRA","TETRIS"]
 
+function startgame(){
 //this generates a random word 
+	tries =12;
 	var randWord = randWordArray[Math.floor(Math.random()*randWordArray.length)];
 
-//this turns the random word into a string in variable "letters"
+//this turns the random word into a character string "letters"
 	var letters = randWord.split("");
 
-//this variable holds the wrong letters
+//this variable holds the incorrect guesses
 	var wrongLetters = [];
 
-//this creates a new variable "progress" that has blanks for each letter in the string
+//this variable tracks each letter in the string
 	var progress = [];
 	
 	for (i = 0; i < randWord.length; i++){	
 		progress.push("_");
 	}
+	document.getElementById("progress").innerHTML = progress.join('');
 
-console.log(randWord)
-console.log(letters)
-console.log(progress)
+	console.log(randWord)
+	console.log(letters)
+	console.log(progress)
+	
 
-//this creates a 'guess' variable every time a key is pressed
+//this function creates a 'guess' variable every time an event key is pressed
 
 document.onkeydown = function(event){
 var guess = String.fromCharCode(event.keyCode);
 
 var flag = false;
 
-
-//this splices the progress array and adds in the correct guess
+//this identifies and processes correct guess
 
 	for (var i=0; i<letters.length; i++){
-
 		if (letters[i] == guess){
 			flag = true;
 			progress.splice(i,1,guess);
@@ -49,9 +54,10 @@ var flag = false;
 		document.getElementById("progress").innerHTML = progress.join(' ');	
 			}
 		}
-			
-	if(flag === false){
-		console.log(guess)
+
+//this identifies and processes incorrect guesses		
+
+	if (flag === false){
 		wrongLetters.push(guess);
 		document.getElementById("wrongletters").innerHTML = wrongLetters.join('');
 		tries --;
@@ -59,34 +65,38 @@ var flag = false;
 	if (tries < 1){
 		document.getElementById("tries").innerHTML = "You lose!";
 		document.getElementById("wrongletters").innerHTML = "You lose!";
+		startgame();
 		}
     }
+
+//this identifies and processes the 'wins' 
+var solved = true;
+
+	for (var i=0; i<progress.length; i++){	
+		if (progress[i] === "_"){
+			solved = false;
+		} 
+	}
+
+	if (solved === true){
+		console.log("You won!")
+		wins += 1;
+		document.getElementById("tries").innerHTML = "You won!";
+		document.getElementById("wrongletters").innerHTML = "Play again!";
+		document.getElementById("wins").innerHTML = wins;
+		startgame();
+	}
+	}
 }
+startgame();
 
-//this ends the wrongLetters variable at 12
-
-// 	if (wrongLetters.length > 12){
-		
-// 		document.getElementById("wrongletters").innerHTML = "You LOSE!"
-// 	}
-
-// 	if(letters.includes(wrongLetters)){
-
-// 		tries +=1;	
-
-// //this reduces the count of guesses remaining 
-// 	if (tries >= 1) {
-
-// 			tries -= 1
-// 	}
-	
-// 	else {
-// 		tries = "You Lose!"
-// 	};
-	
-// 	document.getElementById("tries").innerHTML = tries;
-// 	}
-
-// //this is the alphabet (delete if don't use)
-// var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-
+	// function PlayGameLoop(){
+	// 	for (i = 0; i < 20; i++){
+	// 		if (wins < 10) {
+	// 			return(true);
+	// 		}
+	// 	}
+	// 	return(false);
+	// }
+	// while (PlayGameLoop()){}
+	// 

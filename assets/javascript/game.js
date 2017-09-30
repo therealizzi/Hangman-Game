@@ -1,10 +1,10 @@
-
 //Global variables
-
-//this is the win counter
 	var wins = 0;
 	document.getElementById("wins").innerHTML = wins;
 
+//this is SUPPOSED to be the game function
+	function myGame(){
+	}
 //this is the tries counter
 	var tries = 12;
 	document.getElementById("tries").innerHTML = tries;	
@@ -66,21 +66,21 @@ var flag = false;
     }
 
 //this identifies and processes the 'wins' 
-var losing = true;
+var solved = true;
 
 	for (var i=0; i<progress.length; i++){	
 		if (progress[i] === "_"){
-			losing = false;
-			console.log(losing)
+			solved = false;
+			console.log(solved)
 		} 
 	}
 
-	if (losing === true){
+	if (solved === true){
 		console.log("You won!")
-		wins ++;
+		wins += 1;
 		document.getElementById("tries").innerHTML = "You won!";
 		document.getElementById("wrongletters").innerHTML = "You won!";
-		document.getElementById("wins").innerHTML = wins;4
+		document.getElementById("wins").innerHTML = wins;
+		document.onkeydown = myGame();
 	}
-}
-
+	}
